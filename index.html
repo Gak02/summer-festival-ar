@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>夏祭りARフィルター - 人事イベント</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js ライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- AR.js ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/three.js/build/ar-threex.js"></script>
+    
+    <!-- パーティクルシステム用 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js"></script>
+</head>
+<body>
+    <!-- AR表示エリア -->
+    <div id="arContainer"></div>
+    
+    <!-- UI操作パネル -->
+    <div id="ui-panel">
+        <div class="festival-header">
+            <h1>🎆 夏祭りAR 🎆</h1>
+            <p>人事イベント2025</p>
+        </div>
+        
+        <div class="controls">
+            <button id="firework-btn" class="festival-button">
+                🎇 花火を打ち上げる
+            </button>
+            <button id="toggle-logo" class="festival-button">
+                🏮 ロゴ表示切替
+            </button>
+        </div>
+        
+        <!-- 説明 -->
+        <div class="instructions">
+            <p>📱 マーカーにカメラを向けてください</p>
+            <p>🎯 ボタンをタップして花火を楽しもう！</p>
+        </div>
+    </div>
+
+    <!-- ローディング画面 -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="firework-loader"></div>
+            <p>ARを準備中...</p>
+        </div>
+    </div>
+
+    <!-- エラーメッセージ -->
+    <div id="error-message" style="display: none;">
+        <div class="error-content">
+            <h2>⚠️ カメラアクセスエラー</h2>
+            <p>カメラの使用を許可してください</p>
+            <button onclick="location.reload()">再読み込み</button>
+        </div>
+    </div>
+
+    <!-- マーカー表示用モーダル -->
+    <div id="marker-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>ARマーカーをダウンロード</h2>
+            <p>このマーカーを印刷してカメラに向けてください：</p>
+            <img src="https://ar-js-org.github.io/AR.js/data/images/hiro.png" alt="ARマーカー" style="max-width: 300px;">
+            <a href="https://ar-js-org.github.io/AR.js/data/images/hiro.png" download="ar-marker.png" class="download-btn">📥 マーカーをダウンロード</a>
+        </div>
+    </div>
+
+    <button id="show-marker" class="marker-help-btn">❓ マーカー表示</button>
+
+    <!-- メインスクリプト -->
+    <script src="script.js"></script>
+</body>
+</html>
